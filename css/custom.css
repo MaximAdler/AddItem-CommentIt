@@ -5,7 +5,7 @@ body {
     padding: 0;
     font-family: "Open Sans", "Georgia MS", "Arial";
 }
-.ul,li{
+.ul, li {
     list-style: none;
 }
 .navigation {
@@ -72,8 +72,9 @@ body {
 #title {
     color: rgb(86, 90, 105);
 }
-.comnt{
-  padding-left: 18px;
+.comnt {
+    padding-left: 18px;
+
 }
 input {
     font-size: 16px;
@@ -141,25 +142,42 @@ input {
 .table-text {
     width: 325px;
 }
-.full-comment{
-  border-bottom: 2px solid rgb(242, 242, 242);
+.comnt-list {
+    margin-top: 35px;
+    margin-left: 20px;
+    border-collapse: collapse;
 }
-#comment-form{
-  font-size: 12px;
-  color:rgb(102,102,102);
+.full-comment {
+    border-bottom: 2px solid rgb(242, 242, 242);
 }
-#photo{
+#comment-form {
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+}
+#photo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+      background: rgb(230,230,230);
+}
+#your-photo{
   width: 50px;
   height: 50px;
-  background: red;
-  display: inline-block;
+  margin-right: 10px;
+  background: rgb(230,230,230);
 }
-#ready-comment{
-  margin-left: 50px;
+.photo-cell{
+  vertical-align: top;
+  padding-top: 12px;
 }
-#message-place{
-  height: 65px;
-  width:332px;
-  margin-left: 30px;
-
+#ready-comment {
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+#message-place {
+    height: 20px;
+    width: 332px;
+    margin-top: 15px;
+padding-bottom: 50px;
+font-size: 12px;
 }

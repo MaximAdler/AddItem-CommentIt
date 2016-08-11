@@ -9,8 +9,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="/js/app.js"></script>
-    <script src="/js/ItemController.js"></script>
-    <script src="/js/CommentController.js"></script>
+    <script src="/js/MainController.js"></script>
 </head>
 
 <body>
@@ -20,9 +19,9 @@
         </div>
         <li class="nav-item"><a href="#">Overview</a></li>
     </ul>
-    <div class="main-container">
+    <div class="main-container" ng-controller="MainController">
 
-        <div class="items-container" ng-controller="ItemController">
+        <div class="items-container" >
             <div class="in-items-container">
                 <p id="title">Items</p>
                 <form role="form" ng-submit="addRow()">
@@ -40,7 +39,7 @@
                         </tr>
                         <tr ng-repeat="rowContent in rows" class="list">
                             <td>{{rowContent.name}}
-                                <div class="numOfComments" ng-controller="CommentController">{{comment.length}}</div>
+                                <div class="numOfComments">{{comment.length}}</div>
                                 <!-- for every item - itself number of comments!! -->
                             </td>
                             <td>
@@ -52,18 +51,36 @@
             </div>
         </div>
 
-        <div class="comments-container" ng-controller="CommentController">
+        <div class="comments-container">
             <div class="in-comments-container">
                 <p id="title" class="comnt">Comments #{{comment.length}}</p>
                 <form id='comment-form' ng-submit="addComment()">
-                    <ul>
-                        <li ng-repeat="comnt in comment" class="full-comment">
-                            <div id="photo"></div>
-                            <div id="ready-comment">{{comnt.text }}</div>
-                        </li>
-                    </ul>
-                    <div id="photo"></div>
-                    <input type="text" id="message-place" ng-model="txtcomment" placeholder="">
+                    <table class="comnt-list">
+                        <tbody>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr ng-repeat="comnt in comment" class="full-comment">
+                                <td class="photo-cell">
+                                    <div id="photo" style="background:{{comnt.photo}}"></div>
+                                </td>
+                                <td id="ready-comment">{{comnt.text }}</td>
+                            </tr>
+                            <tr>
+
+
+                                <td>
+                                    <div id="photo"></div>
+                                </td>
+                                <td ng-model="txtcomment">
+                                    <input type="text" id="message-place" ng-model="txtcomment" placeholder="">
+                                    <!-- <textarea id="message-place" ng-model="txtcomment" placeholder=""></textarea> -->
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
                 </form>
             </div>
         </div>
