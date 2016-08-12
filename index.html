@@ -9,9 +9,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/MainController.js"></script>
+    <script src="/js/directive.js"></script>
 </head>
 
 <body>
@@ -22,14 +22,12 @@
         <li class="nav-item"><a href="#">Overview</a></li>
     </ul>
     <div class="main-container" ng-controller="MainController">
-
         <div class="items-container">
             <div class="in-items-container">
                 <p id="title">Items</p>
-                <form role="form" ng-submit="addRow()">
-                    <input type="text" class="addItem-input" name="addItem" placeholder="Type name here..." ng-model="name">
-                    <!-- onfocus="this.value=''"-->
-                    <a href="#" class="add-button" ng-click="addRow()">
+                <form ng-submit="addRow(name)" id="form1">
+                    <input type="text" class="addItem-input" name="addItem" placeholder="Type name here..." ng-model="row.name">
+                    <a href="#" class="add-button" ng-click="addRow(name)">
                         <p>Add new</p>
                     </a>
                 </form>
@@ -39,54 +37,46 @@
                             <th class="table-text"></th>
                             <th class="table-button"></th>
                         </tr>
-                        <!--  -start ng-click="showDetails = !showDetails" -->
-                        <tr ng-repeat="rowContent in rows track by $index" class="list">
-                            <td>{{rowContent.name}}
-                                <div class="numOfComments">{{comment.length}}</div>
-                                <!-- for every item - itself number of comments!! -->
+                        <tr class="list" ng-class="{ 'active-row': $index == rowIndex}" ng-repeat="row in rows track by $index" ng-click="onComments($index)">
+                            <td class="rowText">{{row.name}}
+                                <div class="numOfComments">{{0+row.comments.length}}</div>
                             </td>
                             <td>
-                                <input type="button" ng-repeat-end class="remove-button" value="Delete" ng-click="removeRow($index)" />
+                                <input type="button" class="remove-button" value="Delete" ng-click="removeRow($index)" />
                             </td>
-
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <!--ng-repeat-end ng-show='rowContent.showDetails'-->
         <div class="comments-container">
             <div class="in-comments-container">
-                <p id="title" class="comnt">Comments #{{comment.length}}</p>
-                <form id='comment-form' ng-submit="addComment()">
-                    <table class="comnt-list">
-                        <tbody>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr ng-repeat="comnt in comment track by $index" class="full-comment">
-                                <td class="photo-cell">
-                                    <div id="photo" style="background:{{comnt.photo}}"></div>
-                                </td>
-                                <td id="ready-comment">{{comnt.text }}</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div id="photo"></div>
-                                </td>
-                                <td ng-model="txtcomment">
-                                    <input type="text" id="message-place" ng-model="txtcomment" placeholder="">
-                                    <!-- <textarea id="message-place" ng-model="txtcomment" placeholder=""></textarea> -->
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
+                <p id="title" class="comnt">Comments <span ng-if="rowIndex!==undefined"> #{{rowIndex+1}}</p>
+              <form id='comment-form'>
+                  <table class="comnt-list">
+                      <tbody>
+                          <tr>
+                              <th></th>
+                              <th></th>
+                          </tr>
+                          <tr ng-repeat="comment in currentRow.comments track by $index" class="full-comment">
+                              <td class="photo-cell">
+                                  <div id="photo"></div>
+                              </td>
+                              <td id="ready-comment">{{comment}}</td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <div id="photo"></div>
+                              </td>
+                              <td>
+                                  <textarea id="message-place" ng-model="txtcomment" ng-enter="addComment()" placeholder=""></textarea>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </form>
         </div>
-
     </div>
 </body>
-
 </html>

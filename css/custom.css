@@ -1,5 +1,4 @@
 body {
-    /*background: url(test.jpg) no-repeat fixed;*/
     background: #fff;
     margin: 0;
     padding: 0;
@@ -47,7 +46,6 @@ body {
     width: 478px;
 }
 .in-items-container {
-    padding-left: 29px;
     font-size: 36px;
     padding-bottom: 25px;
     margin-top: -24px;
@@ -56,6 +54,13 @@ body {
     margin-bottom: 7px;
     margin-left: -4px;
     color: rgb(86, 90, 105);
+    padding-left: 29px;
+}
+#form1 {
+    padding-left: 29px;
+}
+.rowText {
+    padding-left: 29px;
 }
 .comments-container {
     position: absolute;
@@ -69,12 +74,8 @@ body {
     padding-bottom: 25px;
     margin-top: -24px;
 }
-#title {
-    color: rgb(86, 90, 105);
-}
 .comnt {
     padding-left: 18px;
-
 }
 input {
     font-size: 16px;
@@ -138,7 +139,7 @@ input {
     cursor: pointer;
 }
 .list:hover {
-    background: rgba(39, 204, 192, .09);
+    background: rgba(39, 204, 192, .07);
 }
 .table-text {
     width: 325px;
@@ -159,17 +160,17 @@ input {
     width: 50px;
     height: 50px;
     margin-right: 10px;
-      background: rgb(230,230,230);
+    background: rgb(230, 230, 230);
 }
-#your-photo{
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-  background: rgb(230,230,230);
+#your-photo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    background: rgb(230, 230, 230);
 }
-.photo-cell{
-  vertical-align: top;
-  padding-top: 12px;
+.photo-cell {
+    vertical-align: top;
+    padding-top: 12px;
 }
 #ready-comment {
     padding-top: 10px;
@@ -179,6 +180,12 @@ input {
     height: 20px;
     width: 332px;
     margin-top: 15px;
-padding-bottom: 50px;
-font-size: 12px;
+    padding-bottom: 50px;
+    font-size: 12px;
+    resize: none;
+}
+.active-row {
+    border-left: 5px solid rgb(255, 47, 90);
+    !important;
+    margin-right: 20px;
 }
