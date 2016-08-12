@@ -135,6 +135,7 @@ input {
 .list {
     border-bottom: 2px solid rgb(242, 242, 242);
     height: 51px;
+    cursor: pointer;
 }
 .list:hover {
     background: rgba(39, 204, 192, .09);

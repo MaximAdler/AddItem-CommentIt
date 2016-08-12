@@ -14,10 +14,18 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http) {
     });
     localStorage.setItem('rows', JSON.stringify($scope.rows));
 
+    $scope.rowsIndex = 0;
+
+    $scope.index = function(id) {
+       $scope.rowsIndex = id;
+      console.log(id);
+    }
+
     $scope.addRow = function() {
         if (this.name) {
             $scope.rows.push({
-                name: $scope.name
+                name: $scope.name,
+                id: $scope.rows.lenght + 1
             });
             $scope.name = '';
 
@@ -30,19 +38,36 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http) {
         localStorage.setItem('rows', JSON.stringify($scope.rows));
     };
 
+//Select Row
 
+
+$scope.showDetails = true;
+    // $scope.selectedRow = null;
+    //
+    // $scope.getDetails = function(app) {
+    //     $scope.selectedRow = app;
+    // };
 
     //comments
 
-    $http.get("./data/comments.json").success(function(data) {
-        $scope.comment = data;
-    })
+
+
+
+
+
+$scope.savedCom = localStorage.getItem('comment');
+$scope.comment = (localStorage.getItem('comment') !== null) ? JSON.parse($scope.savedCom) : $http.get('./data/comments.json').success(function(data) {
+    $scope.comment= data;
+});
+localStorage.setItem('comment', JSON.stringify($scope.comment));
+
     $scope.addComment = function() {
         if (this.txtcomment) {
             $scope.comment.push({
-                "text": $scope.txtcomment
+                text: $scope.txtcomment
             });
             $scope.txtcomment = '';
+            localStorage.setItem('comment',JSON.stringify($scope.comment));
         }
     }
 

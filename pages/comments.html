@@ -1,0 +1,31 @@
+<div class="in-comments-container">
+    <p id="title" class="comnt">Comments #{{comment.length}}</p>
+    <form id='comment-form' ng-submit="addComment()">
+        <table class="comnt-list">
+            <tbody>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="comnt in comment" class="full-comment">
+                    <td class="photo-cell">
+                        <div id="photo" style="background:{{comnt.photo}}"></div>
+                    </td>
+                    <td id="ready-comment">{{comnt.text }}</td>
+                </tr>
+                <tr>
+
+
+                    <td>
+                        <div id="photo"></div>
+                    </td>
+                    <td ng-model="txtcomment">
+                        <input type="text" id="message-place" ng-model="txtcomment" placeholder="">
+                        <!-- <textarea id="message-place" ng-model="txtcomment" placeholder=""></textarea> -->
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
